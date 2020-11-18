@@ -1,0 +1,1123 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/23/2018 8:25:41 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-0CMQN56"
+  DTS:CreatorName="DESKTOP-0CMQN56\Gunnar Andresen"
+  DTS:DTSID="{E3BFC369-959F-4411-BB44-59F84772B2B8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
+  DTS:LocaleID="1044"
+  DTS:ObjectName="Lager sumtabeller"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{9E044203-C88F-418F-A628-F8ABC1BF670B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1ED0681-2164-4608-B76D-98A1E66F571C}"
+      DTS:ObjectName="DESKTOP-0CMQN56.Trav">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-0CMQN56;Initial Catalog=Trav;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Leser Fakta-Lop summer starter galopper"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F9F70618-C654-45CE-87F0-0426C56F220C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Leser Fakta-Lop summer starter galopper"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1].Columns[Id_nr]"
+                      cachedDataType="i4"
+                      cachedName="Id_nr"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Id_nr]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1].Columns[Premie]"
+                      cachedDataType="numeric"
+                      cachedName="Premie"
+                      cachedPrecision="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Premie]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1].Columns[Bane]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Bane"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Bane]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1].Columns[Galoppind]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Galoppind"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppind]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Antallstarter_Hest]"
+                      dataType="ui8"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Antallstarter_Hest]"
+                      name="Antallstarter_Hest">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Id_nr]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[idnr_Hest]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[idnr_Hest]"
+                      name="idnr_Hest">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Id_nr]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[TotPremieHest]"
+                      dataType="numeric"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[TotPremieHest]"
+                      name="TotPremieHest"
+                      precision="10">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Premie]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Bane]"
+                      name="Bane">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Bane]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galoppind]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galoppind]"
+                      name="Galoppind">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppind]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galopper]"
+                      dataType="ui8"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galopper]"
+                      name="Galopper">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppind]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Leser Fakta Lop summer starter galopp"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fakta_lop]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Lop]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Lop]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Lop]"
+                      name="Lop"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Plassering]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Plassering]"
+                      length="50"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Plassering]"
+                      name="Plassering"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Startnr]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Startnr]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Startnr]"
+                      name="Startnr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Hestenavn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Hestenavn]"
+                      length="30"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Hestenavn]"
+                      name="Hestenavn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Distanse]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Distanse]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Distanse]"
+                      name="Distanse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[KmTid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[KmTid]"
+                      length="20"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[KmTid]"
+                      name="KmTid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Premie]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Premie]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Premie]"
+                      name="Premie"
+                      precision="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Kusk]"
+                      length="30"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Kusk]"
+                      name="Kusk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Odds]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Odds]"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Odds]"
+                      name="Odds"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[TotTid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[TotTid]"
+                      length="7"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[TotTid]"
+                      name="TotTid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[DistanseHest]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[DistanseHest]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[DistanseHest]"
+                      name="DistanseHest"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[TotalPremieSum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[TotalPremieSum]"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[TotalPremieSum]"
+                      name="TotalPremieSum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppind]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Galoppind]"
+                      length="20"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppind]"
+                      name="Galoppind"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Id_nr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Id_nr]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Id_nr]"
+                      name="Id_nr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Reg_Nr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Reg_Nr]"
+                      length="15"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Reg_Nr]"
+                      name="Reg_Nr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Bane]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Bane]"
+                      length="25"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Bane]"
+                      name="Bane"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Dato]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Dato]"
+                      name="Dato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Lastdato]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Lastdato]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Lastdato]"
+                      name="Lastdato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[StartMetode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[StartMetode]"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[StartMetode]"
+                      name="StartMetode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppprosent]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Galoppprosent]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].Columns[Galoppprosent]"
+                      name="Galoppprosent"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Lop]"
+                      dataType="i2"
+                      name="Lop" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Plassering]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Plassering" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Startnr]"
+                      dataType="i2"
+                      name="Startnr" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Hestenavn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Hestenavn" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Distanse]"
+                      dataType="i2"
+                      name="Distanse" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[KmTid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="KmTid" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Premie]"
+                      dataType="numeric"
+                      name="Premie"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Kusk" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Odds]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Odds" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[TotTid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="TotTid" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[DistanseHest]"
+                      dataType="i2"
+                      name="DistanseHest" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[TotalPremieSum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TotalPremieSum" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Galoppind]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Galoppind" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Id_nr]"
+                      dataType="i4"
+                      name="Id_nr" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Reg_Nr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Reg_Nr" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      name="Bane" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      dataType="dbDate"
+                      name="Dato" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Lastdato]"
+                      dataType="dbDate"
+                      name="Lastdato" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[StartMetode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="StartMetode" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output].ExternalColumns[Galoppprosent]"
+                      dataType="numeric"
+                      name="Galoppprosent"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Lop]"
+                      dataType="i2"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Lop]"
+                      name="Lop" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Plassering]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Plassering]"
+                      name="Plassering" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Startnr]"
+                      dataType="i2"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Startnr]"
+                      name="Startnr" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Hestenavn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Hestenavn]"
+                      name="Hestenavn" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Distanse]"
+                      dataType="i2"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Distanse]"
+                      name="Distanse" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[KmTid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[KmTid]"
+                      name="KmTid" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Premie]"
+                      dataType="numeric"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Premie]"
+                      name="Premie"
+                      precision="10" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Kusk]"
+                      name="Kusk" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Odds]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Odds]"
+                      name="Odds" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[TotTid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[TotTid]"
+                      name="TotTid" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[StartMetode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[StartMetode]"
+                      name="StartMetode" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[DistanseHest]"
+                      dataType="i2"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[DistanseHest]"
+                      name="DistanseHest" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[TotalPremieSum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[TotalPremieSum]"
+                      name="TotalPremieSum" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Galoppind]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Galoppind]"
+                      name="Galoppind" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Id_nr]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Id_nr]"
+                      name="Id_nr" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Reg_Nr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Reg_Nr]"
+                      name="Reg_Nr" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Bane]"
+                      name="Bane" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      dataType="dbDate"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      name="Dato" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Lastdato]"
+                      dataType="dbDate"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Lastdato]"
+                      name="Lastdato" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Galoppprosent]"
+                      dataType="numeric"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[Galoppprosent]"
+                      name="Galoppprosent"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[SumHest]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Antallstarter_Hest]"
+                      cachedDataType="ui8"
+                      cachedName="Antallstarter_Hest"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Antallstarter_Hest]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Antallstarter_Hest]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idnr_Hest]"
+                      cachedDataType="i4"
+                      cachedName="idnr_Hest"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idnr_Hest]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[idnr_Hest]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotPremieHest]"
+                      cachedDataType="numeric"
+                      cachedName="TotPremieHest"
+                      cachedPrecision="10"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotPremieHest]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[TotPremieHest]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bane]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Bane"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bane]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Bane]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Galoppind]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Galoppind"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Galoppind]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galoppind]" />
+                    <inputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Galopper]"
+                      cachedDataType="ui8"
+                      cachedName="Galopper"
+                      externalMetadataColumnId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Galopper]"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1].Columns[Galopper]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Antallstarter_Hest]"
+                      dataType="numeric"
+                      name="Antallstarter_Hest"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idnr_Hest]"
+                      dataType="i4"
+                      name="idnr_Hest" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotPremieHest]"
+                      dataType="numeric"
+                      name="TotPremieHest"
+                      precision="10" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      name="Bane" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Galoppind]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Galoppind" />
+                    <externalMetadataColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Galopper]"
+                      dataType="numeric"
+                      name="Galopper"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Leser Fakta-Lop summer starter galopper.Paths[Aggregate Output 1]"
+              endId="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Leser Fakta-Lop summer starter galopper.Paths[OLE DB Source Output]"
+              endId="Package\Leser Fakta-Lop summer starter galopper\Aggregate.Inputs[Aggregate Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="274,42"
+          Id="Package\Leser Fakta-Lop summer starter galopper"
+          TopLeft="38,40" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Leser Fakta-Lop summer starter galopper">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination"
+          TopLeft="113,258" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp"
+          TopLeft="79,43" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Leser Fakta-Lop summer starter galopper\Aggregate"
+          TopLeft="130,149" />
+        <EdgeLayout
+          Id="Package\Leser Fakta-Lop summer starter galopper.Paths[OLE DB Source Output]"
+          TopLeft="211,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.5,64"
+              Start="0,0"
+              End="-17.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="-4,32" />
+                  <mssgle:LineSegment
+                    End="-13.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.5,32"
+                    Point2="-17.5,32"
+                    Point3="-17.5,36" />
+                  <mssgle:LineSegment
+                    End="-17.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leser Fakta-Lop summer starter galopper.Paths[Aggregate Output 1]"
+          TopLeft="196,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leser Fakta-Lop summer starter galopper\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leser Fakta-Lop summer starter galopper\Leser Fakta Lop summer starter galopp">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

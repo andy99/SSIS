@@ -1,0 +1,1782 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2018 11:09:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-0CMQN56"
+  DTS:CreatorName="DESKTOP-0CMQN56\Gunnar Andresen"
+  DTS:DTSID="{08C50CB9-CF74-4826-A9D9-4E2F71B6A23C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
+  DTS:LocaleID="1044"
+  DTS:ObjectName="LagerIDNRKusk"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{73031951-6FB4-4A3C-8E94-E195409193FA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-0CMQN56]"
+      DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{48064F97-2815-46AA-A8CE-291587ED48FA}"
+      DTS:ObjectName="DESKTOP-0CMQN56">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-0CMQN56;Provider=MSOLAP.6;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A6AF3629-9A26-4DE2-8C23-27742FBD9363}"
+      DTS:ObjectName="DESKTOP-0CMQN56.Trav">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-0CMQN56;Initial Catalog=Trav;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat Med KuskIdnr]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{3A79963B-436D-4EB8-89A9-3E3ED6A30C68}"
+      DTS:ObjectName="Flat Med KuskIdnr">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1044"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\workplace_python\TravAnalyse\KuskIdnr.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Kusk"
+              DTS:DTSID="{C8557B54-E494-420E-BD15-E383B1AFA671}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Kuskidnr"
+              DTS:DTSID="{3922ED2E-1851-40DF-87C8-C7F240B1B442}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Lager idnr_for kusker"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0929A9F3-6978-44D5-AFBA-C1A9DBCA3922}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Lager idnr_for kusker"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Alle Kusker med idnr]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Navn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Navn"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Navn]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Navn]" />
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Nasjonalitet]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Nasjonalitet"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Nasjonalitet]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Nasjonalitet]" />
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Kortnavn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Kortnavn"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Kortnavn]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Kortnavn]" />
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Proff]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="Proff"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Proff]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Proff]" />
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Hjemmebane]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Hjemmebane"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Hjemmebane]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Hjemmebane]" />
+                    <inputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].Columns[Lisens]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Lisens"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Lisens]"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Lisens]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Navn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Navn" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Nasjonalitet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Nasjonalitet" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Kortnavn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Kortnavn" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Proff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Proff" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Hjemmebane]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Hjemmebane" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Lisens]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Lisens" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input].ExternalColumns[Kuskidnr]"
+                      dataType="i4"
+                      name="Kuskidnr" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Lager idnr_for kusker\Leser AlleKusker"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Leser AlleKusker"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AlleKusker]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Lager idnr_for kusker\Leser AlleKusker.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Navn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Navn]"
+                      length="30"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Navn]"
+                      name="Navn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Nasjonalitet]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Nasjonalitet]"
+                      length="30"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Nasjonalitet]"
+                      name="Nasjonalitet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Kortnavn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Kortnavn]"
+                      length="20"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Kortnavn]"
+                      name="Kortnavn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Proff]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Proff]"
+                      length="3"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Proff]"
+                      name="Proff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Hjemmebane]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Hjemmebane]"
+                      length="25"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Hjemmebane]"
+                      name="Hjemmebane"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Lisens]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Lisens]"
+                      length="50"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].Columns[Lisens]"
+                      name="Lisens"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Navn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Navn" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Nasjonalitet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Nasjonalitet" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Kortnavn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Kortnavn" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Proff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Proff" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Hjemmebane]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Hjemmebane" />
+                    <externalMetadataColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output].ExternalColumns[Lisens]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Lisens" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Navn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Navn]"
+                      name="Navn" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Nasjonalitet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Nasjonalitet]"
+                      name="Nasjonalitet" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Kortnavn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Kortnavn]"
+                      name="Kortnavn" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Proff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Proff]"
+                      name="Proff" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Hjemmebane]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Hjemmebane]"
+                      name="Hjemmebane" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Lisens]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[Lisens]"
+                      name="Lisens" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Lager idnr_for kusker.Paths[OLE DB Source Output]"
+              endId="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Lager idnr_for kusker\Leser AlleKusker.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Legger id_nr på tabell StatVunnetKusker"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9A1154D9-658C-496D-B6F0-D99E6218AF56}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Legger id_nr på tabell StatVunnetKusker"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1044"
+              name="Flat file med idnr for kusk brukes i neste jobb for oppdatering">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat Med KuskIdnr]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat Med KuskIdnr]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].Columns[Kusk]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Kusk"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].ExternalColumns[Kusk]"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kusk]" />
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].Columns[Kuskidnr]"
+                      cachedDataType="i4"
+                      cachedName="Kuskidnr"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].ExternalColumns[Kuskidnr]"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kuskidnr]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].ExternalColumns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Kusk" />
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input].ExternalColumns[Kuskidnr]"
+                      dataType="i4"
+                      name="Kuskidnr" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup"
+              componentClassID="Microsoft.FuzzyLookup"
+              contactInfo="Fuzzy Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Performs data cleaning tasks such as standardizing data, correcting data, and providing missing values.  Uses fuzzy matching to return one or more close matches from a reference table. For example, lookup customer data by address, even if your input address data does not exactly match your reference address data."
+              name="Fuzzy Lookup"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
+                  name="MatchIndexOptions"
+                  typeConverter="tcMatchIndexOptions">1</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
+                  expressionType="Notify"
+                  name="MaxMemoryUsage" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the name of the fuzzy-match index table to be reused or the table name in which a newly generated fuzzy-match index table will be written."
+                  name="MatchIndexName"
+                  state="escaped" />
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the reference table or view against which to match incoming records."
+                  name="ReferenceTableName"
+                  state="escaped">_x005B_dbo_x005D_._x005B_Alle_x0020_Kusker_x0020_med_x0020_idnr_x005D_</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to drop an existing fuzzy-match index table if transformation is configured to generate a new table and a table with the same name already exists."
+                  name="DropExistingMatchIndex">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether a copy of the reference table should be made for fuzzy match index construction and subsequent matching.  It is strongly recommended that a copy always be made, otherwise unpredictable output may result if the contents of the reference table change during package execution (or between executions if reusing a fuzzy match index).  If this property is set to false, the reference table must additionally have a clustered index built upon an integer identity column."
+                  name="CopyReferenceTable">1</property>
+                <property
+                  dataType="System.UInt32"
+                  description="Specifies the maximum number of fuzzy matches to return for an input record."
+                  name="MaxOutputMatchesPerInput">1</property>
+                <property
+                  dataType="System.Single"
+                  description="Specifies the minimum similarity score required for the match results that the transformation returns."
+                  name="MinSimilarity">0.44</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the set of white-space and punctuation characters used to separate fuzzy match fields into the words used for matching and scoring a fuzzy lookup."
+                  name="Delimiters"
+                  state="escaped">_x0020__x0009__x000D__x000A__x002C_._x003B_:-_x0022__x0027__x0026__x002F__x005C__x0040__x0021__x003F__x0028__x0029__x003C__x003E__x005B__x005D__x007B__x007D__x007C__x0023__x002A__x005E__x0025_</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the metadata of the reference table in XML format."
+                  name="ReferenceMetadataXml"
+                  state="escaped">_x003C_referenceMetadata_x003E__x003C_referenceColumns_x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Kuskidnr_x0022__x0020_dataType_x003D__x0022_DT_I4_x0022__x0020_length_x003D__x0022_0_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Navn_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_30_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Nasjonalitet_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_30_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Kortnavn_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_20_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Proff_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_3_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Hjemmebane_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_25_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Lisens_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_50_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C__x002F_referenceColumns_x003E__x003C__x002F_referenceMetadata_x003E__x000D__x000A_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, each input record will be directly compared against EVERY record in the reference table.  This may produce slightly better results, but will be extremely slow unless the number of records in the reference table is very small.  Note that the entire reference table will be loaded into main memory if this option is enabled.  This option is primarily intended for debugging purposes and should be used with care."
+                  name="Exhaustive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, Fuzzy Lookup will partially load the error-tolerant index and the reference table into main memory before execution begins.  This can greatly enhance performance if many input rows are to be processed."
+                  name="WarmCaches">true</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input]"
+                  name="Fuzzy Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input].Columns[vunnet]"
+                      cachedDataType="i4"
+                      cachedName="vunnet"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[vunnet]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input].Columns[Kusk]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Kusk"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">Navn</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input].Columns[Dato]"
+                      cachedDataType="dbDate"
+                      cachedName="Dato"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dato]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input].Columns[Bane]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Bane"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bane]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output]"
+                  name="Fuzzy Lookup Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[vunnet]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[vunnet]"
+                      name="vunnet">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[vunnet]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kusk]"
+                      name="Kusk">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Dato]"
+                      dataType="dbDate"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Dato]"
+                      name="Dato">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dato]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Bane]"
+                      name="Bane">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bane]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Navn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Navn]"
+                      name="Navn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Navn</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kuskidnr]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[Kuskidnr]"
+                      name="Kuskidnr">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Kuskidnr</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      dataType="r4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      name="_Similarity">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      dataType="r4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      name="_Confidence">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Similarity_Kusk]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;Kusk&quot;."
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output].Columns[_Similarity_Kusk]"
+                      name="_Similarity_Kusk">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StatVunnetKusker]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[vunnet]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vunnet]"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[vunnet]"
+                      name="vunnet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kusk]"
+                      length="30"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk]"
+                      name="Kusk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dato]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Dato]"
+                      name="Dato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bane]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bane]"
+                      length="25"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bane]"
+                      name="Bane"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk_Id_nr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kusk_Id_nr]"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].Columns[Kusk_Id_nr]"
+                      name="Kusk_Id_nr"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[vunnet]"
+                      dataType="i4"
+                      name="vunnet" />
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Kusk" />
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Dato]"
+                      dataType="dbDate"
+                      name="Dato" />
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      name="Bane" />
+                    <externalMetadataColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Kusk_Id_nr]"
+                      dataType="i4"
+                      name="Kusk_Id_nr" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vunnet]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[vunnet]"
+                      name="vunnet" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kusk]"
+                      name="Kusk" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      dataType="dbDate"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Dato]"
+                      name="Dato" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bane]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bane]"
+                      name="Bane" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kusk_Id_nr]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Kusk_Id_nr]"
+                      name="Kusk_Id_nr" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Legger id_nr på tabell StatVunnetKusker.Paths[Fuzzy Lookup Output]"
+              endId="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering.Inputs[Flat File Destination Input]"
+              name="Fuzzy Lookup Output"
+              startId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Outputs[Fuzzy Lookup Output]" />
+            <path
+              refId="Package\Legger id_nr på tabell StatVunnetKusker.Paths[OLE DB Source Output]"
+              endId="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup.Inputs[Fuzzy Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F5654711-50C5-4B2F-BD7B-2D63DDFD025B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Oppdaterer Statistikk Vunnet for kusker med idnr"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1044"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat Med KuskIdnr]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat Med KuskIdnr]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Kusk]"
+                      length="30"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kusk]"
+                      name="Kusk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kuskidnr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Kuskidnr]"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kuskidnr]"
+                      name="Kuskidnr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Kusk]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Kusk" />
+                    <externalMetadataColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Kuskidnr]"
+                      dataType="i4"
+                      name="Kuskidnr" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE
+  [Trav].[dbo].[StatVunnetKusker]
+  set Kusk_id_nr = ?
+  where Kusk = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-0CMQN56.Trav]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].Columns[Kuskidnr]"
+                      cachedDataType="i4"
+                      cachedName="Kuskidnr"
+                      externalMetadataColumnId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kuskidnr]" />
+                    <inputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].Columns[Kusk]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Kusk"
+                      externalMetadataColumnId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output].Columns[Kusk]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr.Paths[Flat File Source Output]"
+              endId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Flat File Source Output"
+              startId="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{07136406-11A4-4E87-8C18-AA3109E7DA1F}"
+      DTS:From="Package\Lager idnr_for kusker"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Legger id_nr på tabell StatVunnetKusker" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Lager idnr_for kusker"
+          TopLeft="121,49" />
+        <NodeLayout
+          Size="269,42"
+          Id="Package\Legger id_nr på tabell StatVunnetKusker"
+          TopLeft="86,132" />
+        <NodeLayout
+          Size="311,42"
+          Id="Package\Oppdaterer Statistikk Vunnet for kusker med idnr"
+          TopLeft="103,217" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="211,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,41"
+              Start="0,0"
+              End="9.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="5.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,20.5"
+                    Point2="9.5,20.5"
+                    Point3="9.5,24.5" />
+                  <mssgle:LineSegment
+                    End="9.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Lager idnr_for kusker">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="246,47"
+          Id="Package\Lager idnr_for kusker\Leser AlleKusker"
+          TopLeft="74,47" />
+        <NodeLayout
+          Size="381,42"
+          Id="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt"
+          TopLeft="80,167" />
+        <EdgeLayout
+          Id="Package\Lager idnr_for kusker.Paths[OLE DB Source Output]"
+          TopLeft="197,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.5,73"
+              Start="0,0"
+              End="73.5,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="69.5,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69.5,36.5"
+                    Point2="73.5,36.5"
+                    Point3="73.5,40.5" />
+                  <mssgle:LineSegment
+                    End="73.5,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Lager idnr_for kusker\Alle Kusker med idnr Lages automatisk pga IDENTIT i første felt">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Lager idnr_for kusker\Leser AlleKusker">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Legger id_nr på tabell StatVunnetKusker">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source"
+          TopLeft="73,45" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup"
+          TopLeft="88,155" />
+        <NodeLayout
+          Size="369,42"
+          Id="Package\Legger id_nr på tabell StatVunnetKusker\Flat file med idnr for kusk brukes i neste jobb for oppdatering"
+          TopLeft="76,263" />
+        <EdgeLayout
+          Id="Package\Legger id_nr på tabell StatVunnetKusker.Paths[OLE DB Source Output]"
+          TopLeft="148,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5,68"
+              Start="0,0"
+              End="11.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="7.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,34"
+                    Point2="11.5,34"
+                    Point3="11.5,38" />
+                  <mssgle:LineSegment
+                    End="11.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Legger id_nr på tabell StatVunnetKusker.Paths[Fuzzy Lookup Output]"
+          TopLeft="159.5,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101,66"
+              Start="0,0"
+              End="101,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29"
+                    Point2="0,33"
+                    Point3="4,33" />
+                  <mssgle:LineSegment
+                    End="97,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97,33"
+                    Point2="101,33"
+                    Point3="101,37" />
+                  <mssgle:LineSegment
+                    End="101,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Legger id_nr på tabell StatVunnetKusker\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Legger id_nr på tabell StatVunnetKusker\Fuzzy Lookup">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Oppdaterer Statistikk Vunnet for kusker med idnr">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\OLE DB Command"
+          TopLeft="119,199" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Oppdaterer Statistikk Vunnet for kusker med idnr\Flat File Source"
+          TopLeft="127,51" />
+        <EdgeLayout
+          Id="Package\Oppdaterer Statistikk Vunnet for kusker med idnr.Paths[Flat File Source Output]"
+          TopLeft="202.25,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,106"
+              Start="0,0"
+              End="0,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
